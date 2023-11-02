@@ -8,6 +8,7 @@ from models.place import Place
 from os import environ
 from flask import Flask, render_template
 app = Flask(__name__)
+import uuid
 # app.jinja_env.trim_blocks = True
 # app.jinja_env.lstrip_blocks = True
 
@@ -18,7 +19,7 @@ def close_db(error):
     storage.close()
 
 
-@app.route('/hbnb', strict_slashes=False)
+@app.route('/0-hbnb', strict_slashes=False)
 def hbnb():
     """ HBNB is alive! """
     states = storage.all(State).values()
@@ -35,6 +36,7 @@ def hbnb():
     places = sorted(places, key=lambda k: k.name)
 
     return render_template('0-hbnb.html',
+                           cache_id=uuid.uuid4(),
                            states=st_ct,
                            amenities=amenities,
                            places=places)
