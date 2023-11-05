@@ -3,7 +3,6 @@
 from models import storage
 from models.state import State
 from models.city import   City
-from models.user import User
 from models.amenity import Amenity
 from models.place import Place
 from os import environ
@@ -41,10 +40,9 @@ def hbnb():
                            cache_id=uuid.uuid4(),
                            states=st_ct,
                            amenities=amenities,
-                           user=user,
                            places=places)
 
 
 if __name__ == "__main__":
     """ Main Function """
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
